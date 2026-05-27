@@ -3,6 +3,8 @@ import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import "./Forms.css";
 
+const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
+
 // Assignment 7 — Signup route.
 // Same shape as A6. The only thing new is that we now save TWO things to
 // localStorage on success — the user (as before) AND a JWT the server signs.
@@ -39,7 +41,7 @@ function SignupForm() {
     }
 
     try {
-      const response = await fetch("/api/register", {
+      const response = await fetch(`${baseUrl}/api/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, email, password }),
