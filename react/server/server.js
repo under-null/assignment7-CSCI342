@@ -12,10 +12,8 @@ const jwt      = require("jsonwebtoken");
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 // Middleware — mount BEFORE any route.
-const cors = require("cors");
 app.use(cors({
   origin: [
     "http://localhost:5173",                       // dev
@@ -24,7 +22,6 @@ app.use(cors({
   ],
   credentials: true,
 }));
-app.use(cors());
 app.use(express.json());
 
 // server.js — add anywhere in your routes section
